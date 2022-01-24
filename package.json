@@ -1,0 +1,24 @@
+{
+  "name": "leaflet-cascade-buttons",
+  "version": "1.0.0",
+  "description": "A leaflet plugin to implements cascade buttons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clavijojuan/L.cascadeButtons.git"
+  },
+  "keywords": [
+    "leaflet",
+    "buttons",
+    "controls"
+  ],
+  "author": "Juan Camilo Clavijo Sandoval",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clavijojuan/L.cascadeButtons/issues"
+  },
+  "homepage": "https://github.com/clavijojuan/L.cascadeButtons#readme"
+}
