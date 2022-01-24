@@ -1,0 +1,98 @@
+.hidden {
+    visibility: hidden;
+}
+
+.leaflet-control-cascadeButtons{
+    
+    background-color: transparent;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border:none;
+}
+
+.horizontal {
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.vertical {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-items: flex-start;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.leaflet-control-cascadeButtons button{
+    border-radius: 2px;
+    border: none;
+    background-color:#fff;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 65%);
+    height: 30px;
+    width: 30px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 3px;
+    padding:2px;
+}
+
+.leaflet-control-cascadeButtons button:hover{
+    background-color:#f4f4f4;
+}
+
+.activeButton{
+    box-shadow: 0 0 1px 3px #C2CB00 !important;
+}
+
+.leaflet-control-cascadeButtons ul{
+    background-color: transparent;
+    height: auto;
+    width: auto;
+    padding: 0;
+    margin:0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    animation-delay: 3s
+}
+
+.leaflet-control-cascadeButtons ul li {
+    animation-name: fadein;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+}
+
+.leaflet-control-cascadeButtons ul li i{
+    display:flex;
+    cursor: pointer;
+    background-color: #fff;
+    height: 30px;
+    width: 30px;
+    margin: 3px;
+    align-items: center;
+    justify-content: center;
+    align-self:center;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 65%);
+    line-height:normal;
+    border-radius: 2px;
+}
+
+.leaflet-control-cascadeButtons ul li i:hover{
+    background-color:#f4f4f4;;
+}
+
+@keyframes fadein {
+    0%   {visibility: 0;}
+    100% {opacity: 1;}
+}
