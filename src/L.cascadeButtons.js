@@ -18,6 +18,7 @@ L.Control.cascadeButtons = L.Control.extend({
         this._buttons.forEach(function(button){
             const buttonContainer = L.DomUtil.create('div', `${(button.direction==='horizontal') ? 'horizontal reverse' : ''}`);
             const buttonElement = document.createElement('button');
+            buttonElement.setAttribute("type", "button");
             const buttonIcon = L.DomUtil.create('i', `${button.icon}`);
             buttonElement.append(buttonIcon)
 
