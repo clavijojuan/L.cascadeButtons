@@ -19,6 +19,7 @@ L.Control.cascadeButtons = L.Control.extend({
             const buttonContainer = L.DomUtil.create('div', `${(button.direction==='horizontal') ? 'horizontal reverse' : ''}`);
             const buttonElement = document.createElement('button');
             buttonElement.setAttribute("type", "button");
+            buttonElement.setAttribute("aria-expanded", "false");
             const buttonIcon = L.DomUtil.create('i', `${button.icon}`);
             buttonElement.append(buttonIcon)
 
@@ -48,6 +49,10 @@ L.Control.cascadeButtons = L.Control.extend({
                     }     
                     const elem = L.DomUtil.get(ul);
                     elem.classList.toggle('hidden');
+
+                    const isAriaExpanded = JSON.parse(buttonElement.getAttribute("aria-expanded"))
+                    buttonElement.setAttribute('aria-expanded', !isAriaExpanded);
+                    
                     (!button.ignoreActiveState) ? buttonElement.classList.toggle('activeButton') : '';
                 })
 
