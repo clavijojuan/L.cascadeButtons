@@ -12,8 +12,14 @@
   },
   "keywords": [
     "leaflet",
-    "buttons",
-    "controls"
+    "button",
+    "control",
+    "leaflet-cascade-buttons",
+    "map",
+    "javascript",
+    "webgis",
+    "webmapping",
+    "leaflet-control"
   ],
   "author": "Juan Camilo Clavijo Sandoval",
   "license": "MIT",
