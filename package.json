@@ -1,6 +1,6 @@
 {
   "name": "leaflet-cascade-buttons",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A leaflet plugin to implements cascade buttons",
   "main": "./src/L.cascadeButtons.js",
   "scripts": {
