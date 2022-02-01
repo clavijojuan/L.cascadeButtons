@@ -12,64 +12,80 @@ L.Control.cascadeButtons = L.Control.extend({
 
     onAdd: function (map){
         const className = (this.options.className) ? this.options.className : 'leaflet-control-cascadeButtons';
+        const directionClass = this.buildDirection(this.options.direction);
+        const toolBar = L.DomUtil.create('div', `${className} ${directionClass}`);
 
-        const toolBar = L.DomUtil.create('div', `${className} ${this.options.direction || 'horizontal'}`);
+        this._buttons.forEach((button)=>{
 
-        this._buttons.forEach(function(button){
-            const buttonContainer = L.DomUtil.create('div', `${(button.direction==='horizontal') ? 'horizontal reverse' : ''}`);
-            const buttonElement = document.createElement('button');
-            buttonElement.setAttribute("type", "button");
-            buttonElement.setAttribute("aria-expanded", "false");
-            const buttonIcon = L.DomUtil.create('i', `${button.icon}`);
-            buttonElement.append(buttonIcon)
+            const directionClass = this.buildDirection(this.getOposite(this.options.direction));
+            const container = L.DomUtil.create('div', `${directionClass}`);
+            toolBar.append(container);
+
+            const mainButton = L.DomUtil.create('button', `${button.icon}`);
+            mainButton.setAttribute("type", "button");
+            mainButton.setAttribute("aria-expanded", "false");
+            container.append(mainButton);
 
             if(button.items && button.items.length>0){
 
-                const ul = L.DomUtil.create('ul', `hidden ${(button.direction==='horizontal') ? 'reverse' : 'column'}`);
-                button.items.forEach(function(item, index){
-
-                    const li = document.createElement('li');
-                    li.style.animationDuration = `${1/(index+1)}s`
-
-                    const i = L.DomUtil.create('i', `${item.icon}`);
-
-                    li.addEventListener('click', function(){
-                        item.command()
-                    })
-
-                    li.append(i)  
-                    ul.append(li);
-                    
+                button.items.forEach((item)=>{
+                    const childButton = L.DomUtil.create('button',`${item.icon} hidden`);
+                    childButton.setAttribute("type", "button");
+                    childButton.setAttribute("aria-expanded", "false");
+                    container.append(childButton);
+                    childButton.addEventListener('click', () => item.command());
                 })
 
-                buttonElement.addEventListener('click', function(){
-                    
-                    if(button.command){
-                        button.command();
-                    }     
-                    const elem = L.DomUtil.get(ul);
-                    elem.classList.toggle('hidden');
+                mainButton.addEventListener('click', function(){
+                    container.childNodes.forEach( (child, index) => {
+                        if(index!==0) child.classList.toggle('hidden');
+                    });
 
-                    const isAriaExpanded = JSON.parse(buttonElement.getAttribute("aria-expanded"))
-                    buttonElement.setAttribute('aria-expanded', !isAriaExpanded);
-                    
-                    (!button.ignoreActiveState) ? buttonElement.classList.toggle('activeButton') : '';
+                    const isAriaExpanded = JSON.parse(mainButton.getAttribute("aria-expanded"));
+                    mainButton.setAttribute('aria-expanded', !isAriaExpanded);
+
+                    (!button.ignoreActiveState) ? mainButton.classList.toggle('activeButton') : '';
                 })
-
-                buttonContainer.append(ul)    
-
-            } else {
-                buttonElement.addEventListener('click', function(){
-                    (!button.ignoreActiveState) ? buttonElement.classList.toggle('activeButton') : '';
+            } 
+            else {
+                mainButton.addEventListener('click', function(){
+                    (!button.ignoreActiveState) ? mainButton.classList.toggle('activeButton') : '';
                     button.command();
                 })
             }
-
-            buttonContainer.append(buttonElement)
-            toolBar.append(buttonContainer)
         })
 
+        L.DomEvent.disableClickPropagation(toolBar);
+
         return toolBar;
+    },
+
+    buildDirection: function(direction){
+
+        if(direction === "vertical"){
+            if((this.options.position).includes('left')){
+                if(this.options.position.includes('bottom')) direction = direction + ' col-reverse'
+            }
+            if((this.options.position).includes('right')){
+                if(this.options.position.includes('bottom')) direction = direction + ' col-reverse'
+                direction = direction + ' right';
+            }
+        }
+        else if(direction === "horizontal"){
+            if((this.options.position).includes('top')){
+                if(this.options.position.includes('right')) direction = direction + ' row-reverse';
+            }
+            if((this.options.position).includes('bottom')){
+                if(this.options.position.includes('right')) direction = direction + ' row-reverse';
+                direction = direction + ' bottom'
+            }
+        }
+
+        return direction
+    },
+
+    getOposite: function(direction){
+        return (direction === "vertical") ? "horizontal" : "vertical"
     }
 })
 
