@@ -1,7 +1,7 @@
 # L.cascadeButtons
 A leaflet plugin to create cascade buttons.
 
-![image](https://user-images.githubusercontent.com/57905996/151421885-d22d7164-19fa-4a96-aa23-b3309d2f4b88.png)
+![image](https://user-images.githubusercontent.com/57905996/152066457-5038802a-8818-4f7a-a44e-f07c03f30361.png)
 
 ### [DEMO](https://vibrant-perlman-43d7a4.netlify.app/)
 
@@ -27,24 +27,17 @@ Easy way to implements buttons with cascade subgroup buttons where each one can 
 
 ```javascript
 new L.cascadeButtons([
-    {icon: 'fas fa-home', direction:'horizontal', ignoreActiveState:true , command: () =>{console.log('test') }},
-    {icon: 'fas fa-home', direction:'horizontal', items:[
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
+    {icon: 'fas fa-home', ignoreActiveState:true , command: () =>{console.log('test') }},
+    {icon: 'fas fa-home', items:[
+        {icon: 'fas fa-home', command: () =>{console.log('hola')}},
+        {icon: 'fas fa-home', command: () =>{console.log('hola')}},
+        {icon: 'fas fa-globe', command: () =>{console.log('hola')}},
     ]},
-    {icon: 'fas fa-home', direction:'horizontal', items: [
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
-        {icon: 'fas fa-home', command: () =>{console.log('test')}},
+    {icon: 'fas fa-home', items: [
+        {icon: 'fas fa-home', command: () =>{console.log('hola')}},
+        {icon: 'fas fa-globe', command: () =>{console.log('hola')}},
     ]},
-], {position:'topleft', direction:'vertical'}).addTo(map);
+], {position:'topright', direction:'horizontal'}).addTo(map);
 
 ```
 L.cascadeButtons receives two arguments:
@@ -58,7 +51,6 @@ L.cascadeButtons receives two arguments:
 | Property | Type   | Default  | Description                         |
 | ------------|--- | -------- | ----------------------------------------- |
 | icon     | String | null     | Icon class of Font Icon             |
-| direction| String |'Vertical'| Direction of stacked childs Buttons. Options: 'Vertical' and 'Horizontal' |
 | ignoreActiveState | Boolean  | false | Flag boolean to ignore clicked button style |
 | command  | Function | null or (expand or collapse if button has childs)   | Function to execute when button is clicked |
 | items    | Child properties[] | null | Array of child properties |
