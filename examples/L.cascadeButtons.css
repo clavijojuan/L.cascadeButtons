@@ -1,0 +1,59 @@
+.hidden {
+    visibility: hidden !important;
+}
+
+.leaflet-control-cascadeButtons{
+    background-color: transparent;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border:none;
+}
+
+.leaflet-control-cascadeButtons button{
+    border-radius: 2px;
+    border: none;
+    background-color:#fff;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 65%);
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 3px;
+    padding:2px;
+}
+
+.leaflet-control-cascadeButtons button:hover{
+    background-color:#f4f4f4;;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal {
+    display: flex;
+    align-items: row-reverse;
+}
+
+.right {
+    align-items: flex-end;
+}
+
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.col-reverse {
+    flex-direction: column-reverse;
+}
+
+.bottom {
+    align-items: flex-end;
+}
+
+.activeButton{
+    box-shadow: 0 0 1px 3px #C2CB00 !important;
+}
