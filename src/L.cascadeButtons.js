@@ -24,6 +24,7 @@ L.Control.cascadeButtons = L.Control.extend({
             const mainButton = L.DomUtil.create('button', `${button.icon}`);
             mainButton.setAttribute("type", "button");
             mainButton.setAttribute("aria-expanded", "false");
+            mainButton.setAttribute("title", button.title !== undefined ? button.title : '');
             container.append(mainButton);
 
             if(button.items && button.items.length>0){
@@ -32,6 +33,7 @@ L.Control.cascadeButtons = L.Control.extend({
                     const childButton = L.DomUtil.create('button',`${item.icon} hidden`);
                     childButton.setAttribute("type", "button");
                     childButton.setAttribute("aria-expanded", "false");
+                    childButton.setAttribute("title", item.title !== undefined ? item.title : '');
                     container.append(childButton);
                     childButton.addEventListener('click', () => item.command());
                 })
